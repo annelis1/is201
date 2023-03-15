@@ -1,0 +1,143 @@
+<!--This website has a GPA calculator that takes GPA values for multiple IS prerequisite courses
+    and outputs a new IS GPA that is used for applying to the program-->
+<!--Annelise Anderson, Alec Carter, Kazuki Nakano, Brad Jones, Cody Merrell, Sean Ronstadt-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Scrolling Nav - Start Bootstrap Template</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <script>
+            //This function is called when the user clicks on the calcGPA button
+            function calcGPA()
+            {
+                //Extract the values from the HTML inputs by their assigned id and assigns them to variables
+                //The value extracted is converted from a string to a float/decimal
+                fIS201 = parseFloat(document.getElementById("is201Grade").value);
+                fACC200 = parseFloat(document.getElementById("acc200Grade").value);
+                fIS303= parseFloat(document.getElementById("is303Grade").value);
+                fOverallGPA = parseFloat(document.getElementById("overallGPA").value);
+                fLast30GPA = parseFloat(document.getElementById("last30GPA").value);
+                fEssay = parseInt(document.getElementById("essay").value);
+    
+                //calculates new gpa
+                fFinalGPA = ((fIS201 * .3) + (fIS303 * .3) + (fACC200 * .05) + (fOverallGPA * .12) + (fLast30GPA * .18) + (fEssay * .05)).toFixed(2);
+    
+                //Display the calculated GPA to the HTML label named "coreGPA"
+                document.getElementById("coreGPA").innerHTML = "Core GPA is " + fFinalGPA;
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Welcome to our amazing IS GPA calculator!</h1>
+                <p class="lead">This is a functional website which takes all of your IS prerequisite
+                                grades and turns them into a new IS GPA for when you apply to the program.
+                </p>
+                <a class="btn btn-lg btn-light" href="#about">Click Here to go calculate your IS GPA!</a>
+            </div>
+        </header>
+        <br>
+        <br>
+        <br>
+        <!--Inline CSS centering the text-->
+        <form style="padding-left: 42%;" id = "about">
+            <!--insert html tags --> 
+            <!--label and number input for the overall GPA --> 
+            <label for="overallGPA" class = "ourform" length = >Overall GPA:</label>
+            <input  type= number” id="overallGPA" name="overallGPA"  min=0.0 max=4.0 placeholder=4.0 size = "1">
+            <br>
+            <!--label and number input for the last 30 credits GPA -->
+            <label for="last30GPA"class = "ourform">Last 30 Credits GPA:</label> 
+            <input type=”number” id="last30GPA" name="last30GPA"  min=0.0 max=4.0 placeholder=4.0 size = "1">
+            <br>
+            <!--label and drop down list for the ACC 200 Grade --> 
+            <label for="acc200Grade"class = "ourform">Accounting 200 Grade:</label>
+            <select name="acc200Grade" id="acc200Grade">
+                <option value=4.0>A</option>
+                <option value=3.7>A-</option>
+                <option value=3.4>B+</option>
+                <option value=3.0>B</option>
+                <option value=2.7>B-</option>
+                <option value=2.4>C+</option>
+                <option value=2.0>C</option>
+                <option value=1.7>C-</option>
+                <option value=1.4>D+</option>
+                <option value=1.0>D</option>
+                <option value=0.7>D-</option>
+                <option value=0>E</option>
+            </select>
+            <br>
+            <!--label and drop down list for the IS 201 Grade --> 
+            <label for="is201Grade"class = "ourform">IS 201 Grade:</label>
+            <select name="is201Grade" id="is201Grade">
+                <option value=4.0>A</option>
+                <option value=3.7>A-</option>
+                <option value=3.5>B+</option>
+                <option value=3.0 >B</option>
+                <option value=2.7>B-</option>
+                <option value=2.4>C+</option>
+                <option value=2.0>C</option>
+                <option value=1.7>C-</option>
+                <option value=1.4>D+</option>
+                <option value=1.0>D</option>
+                <option value=0.7>D-</option>
+                <option value=0>E</option>
+            </select>
+            <br>
+            <!--label and drop down list for the IS 303 Grade --> 
+            <label for="is303Grade"class = "ourform">IS 303 Grade:</label>
+            <select name="is303Grade" id="is303Grade">
+                <option value=4.0>A</option>
+                <option value=3.7>A-</option>
+                <option value=3.4>B+</option>
+                <option value=3.0>B</option>
+                <option value=2.7>B-</option>
+                <option value=2.4>C+</option>
+                <option value=2.0>C</option>
+                <option value=1.7>C-</option>
+                <option value=1.4>D+</option>
+                <option value=1.0>D</option>
+                <option value=0.7>D-</option>
+                <option value=0>E</option>
+            </select>
+            <br>
+            <!--label and drop down list for the essay score between 0 and 4 --> 
+            <label for="essay"class = "ourform">Essay score between 0 and 4:</label>
+            <select name="essay" id="essay">
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+                <option value="0">0</option>
+            </select>
+            <br>
+            <!--create a button that will run the calcGPA() function, labeled "Calculate GPA" -->
+            <button  type="button" onclick="calcGPA()">Calculate GPA</button>
+    
+            <!--insert html tag for displaying the calcualted GPA --> 
+            <fieldset>
+                <legend class = "ourform"><b>Overall GPA:</b></legend>
+                <p id="coreGPA"></p>
+            </fieldset>
+    
+        </form>
+        <br>
+        <br>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; IS 303 Group 6 Gang was here</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
